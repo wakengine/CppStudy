@@ -1,3 +1,7 @@
+/**
+ * Implmentation of some testing functions
+ */
+
 #include "Common.h"
 #include "Log.h"
 
@@ -50,4 +54,4 @@ void testLambda() {
     print("All except x captured by reference");
 }
 
-}
+} // end of namespace test
