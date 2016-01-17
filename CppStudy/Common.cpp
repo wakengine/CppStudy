@@ -1,10 +1,29 @@
 #include "Common.h"
-
-using std::vector;
+#include "Log.h"
 
 namespace test {
 
+void testSmartPointer() {
+    FuncTrace();
+
+    Person solid = Person("Solid", 20);
+    shared_ptr<Person> sp = make_shared<Person>("Bob", 10);
+    {
+        shared_ptr<Person> sp(new Person("Eric", 30));
+    }
+    sp.reset(new Person("New and managed by sp", 40));
+
+    Person* p = new Person("New and reset", 40);
+    sp.reset(p);
+    sp = nullptr;
+
+    unique_ptr<Person> up;
+    up.reset(new Person("Unique Pointer", 40));
+}
+
 void testLambda() {
+    FuncTrace();
+
     vector<int> v;
     for (int i = 0; i < 5; i++) {
         v.push_back(i);
