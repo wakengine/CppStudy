@@ -11,14 +11,16 @@ using std::vector;
 
 int main()
 {
-	vector<int> v;
-	v.push_back(1);
-	v.push_back(2);
-    
-	int x = 0;
-	for_each(begin(v), end(v), [&x](int n) { printf("x:%d %d\n", x, n); x++; });
+    vector<int> v;
+    for (int i = 1; i <= 5; i++) {
+        v.push_back(i);
+    }
 
-	printf("Hello World!  :%d\n", x);
+    int x = 1, y = 1;
+    auto print = [&](const char* description) { printf("%s:\t x=%d\ty=%d\n", description, x, y); };
+    print("Before Lambda");
+    for_each(begin(v), end(v), [&](int n) { x += n; y *= n; });
+    print("After Lambda");
 
     return 0;
 }
