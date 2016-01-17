@@ -4,7 +4,7 @@
 #include "stdafx.h"
 
 #include <vector>
-//#include <agri>
+#include <algorithm>
 
 
 using std::vector;
@@ -14,10 +14,11 @@ int main()
 	vector<int> v;
 	v.push_back(1);
 	v.push_back(2);
+    
+	int x = 0;
+	for_each(begin(v), end(v), [&x](int n) { printf("x:%d %d\n", x, n); x++; });
 
-	for_each()
-	printf("Hello World!\n");
+	printf("Hello World!  :%d\n", x);
 
     return 0;
 }
-
