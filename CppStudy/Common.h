@@ -13,7 +13,51 @@ using namespace std;
 namespace test {
     void testLambda();
     void testSmartPointer();
+    void testConstructor();
 }
+
+class ConstructorTest {
+public:
+    ConstructorTest(string name) : mName(name) {
+        cout << "Constructor is called: " << mName << endl;
+    }
+
+    ~ConstructorTest() {
+        cout << "Destructor is called: " << mName << endl;
+    }
+
+    ConstructorTest(const ConstructorTest& rhs) {
+        mName = rhs.mName;
+        cout << "Copy constructor is called: " << mName << endl;
+    }
+
+    ConstructorTest& operator = (const ConstructorTest & rhs) {
+        mName = rhs.mName;
+        cout << "Copy assignment operator is called: " << mName << endl;
+        return *this;
+    }
+
+    ConstructorTest(ConstructorTest&& rhs) {
+        mName = rhs.mName;
+        cout << "Move constructor is called: " << mName << endl;
+    }
+
+    ConstructorTest& operator = (ConstructorTest && rhs) {
+        mName = rhs.mName;
+        cout << "Move assignment operator is called: " << mName << endl;
+        return *this;
+    }
+
+    void setName(string name) {
+        mName = name;
+    }
+
+    void printName() {
+        cout << "Now my name is: " << mName << endl;
+    }
+private:
+    string mName = "Unset";
+};
 
 class Person {
 public:

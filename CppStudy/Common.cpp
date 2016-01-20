@@ -7,6 +7,18 @@
 
 namespace test {
 
+void testConstructor() {
+    FuncTrace();
+    ConstructorTest first("First");
+    ConstructorTest second(first);
+    second = first;
+    second = ConstructorTest("Tmp1");
+    cout << "Now test move constructor" << endl;
+    ConstructorTest third(ConstructorTest("Tmp2"));
+    third.setName("Third");
+    third.printName();
+}
+
 void testSmartPointer() {
     FuncTrace();
 
