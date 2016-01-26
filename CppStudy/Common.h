@@ -1,16 +1,19 @@
 #pragma once
 
 #include <stdio.h>
-
 #include <vector>
 #include <algorithm>
 #include <string>
 #include <iostream>
 #include <memory>
+#include <sstream>
+#include <fstream>
+#include <iomanip>
 
 using namespace std;
 
 namespace test {
+    void testStringstream();
     void testLambda();
     void testSmartPointer();
     void testConstructor();

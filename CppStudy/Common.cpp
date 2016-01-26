@@ -7,6 +7,28 @@
 
 namespace test {
 
+void testStringstream() {
+    FuncTrace();
+    const int LENGTH_PER_LINE = 8;
+    ostringstream os;
+    os << "Data start:" << endl;
+    os.precision(5);
+    os.setf(std::ios::fixed);
+
+    for (int i = 0; i < LENGTH_PER_LINE * 20; i++) {
+        os << std::setw(10) << 1.1 * i << "  ";
+        if (i % LENGTH_PER_LINE == LENGTH_PER_LINE - 1) {
+            os << endl;
+        }
+    }
+    cout << os.str() << endl;
+    const string& tmp = os.str();
+    std::ofstream outfile("result.txt", std::ofstream::binary);
+    outfile << tmp;
+    outfile.flush();
+    outfile.close();
+}
+
 void testConstructor() {
     FuncTrace();
     ConstructorTest first("First");
@@ -25,7 +47,7 @@ void testSmartPointer() {
     Person solid = Person("Solid", 20);
     shared_ptr<Person> sp = make_shared<Person>("Bob", 10);
     {
-        shared_ptr<Person> sp(new Person("Eric", 30));
+        shared_ptr<Person> sp_inside(new Person("Eric", 30));
     }
     sp.reset(new Person("New and managed by sp", 40));
 
